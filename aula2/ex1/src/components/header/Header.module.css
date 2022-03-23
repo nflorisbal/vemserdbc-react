@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #0A111B;
+    padding: 10px 30px;
+}
+
+.menu {
+    display: flex;
+    max-width: 70%;
+    margin: 20px auto;
+}
