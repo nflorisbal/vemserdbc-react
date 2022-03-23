@@ -7,7 +7,7 @@ import style from './Form.module.css'
 
 const Form = () => {
   return (
-    <>
+    <section className={style.container}>
       <PageTitle pageTitle='Contact Us'/>
       <form className={style.form}>
         <Label forInput='username' textLabel='Username:' />
@@ -20,7 +20,7 @@ const Form = () => {
         <TextArea />
         <Input type='submit'/>
       </form>
-  </>
+  </section>
   );
 }
 

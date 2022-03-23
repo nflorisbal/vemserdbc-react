@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 70%;
+  margin: 0 auto;
+}
+
 .form textarea, select {
   display: block;
   width: 40%;
