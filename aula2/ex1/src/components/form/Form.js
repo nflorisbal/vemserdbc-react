@@ -15,6 +15,7 @@ const Form = () => {
       <Select name='questions' id='questions'/>
       <Label forInput='msg' textLabel='Your message:' />
       <TextArea />
+      <Input type='submit'/>
     </form>
   );
 }

@@ -8,3 +8,12 @@
   background-color: #f1f1f1;
   border: none;
 }
+
+.button {
+  background-color:#31435B;
+  color: #f2f2f2;
+}
+
+.button:hover {
+  background-color: #0f1c2c;
+}
