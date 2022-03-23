@@ -1,4 +1,4 @@
-.form input, textarea, select {
+.form textarea, select {
   display: block;
   width: 40%;
   box-sizing: border-box;
@@ -9,11 +9,6 @@
   border: none;
 }
 
-.button {
-  background-color:#31435B;
-  color: #f2f2f2;
-}
-
-.button:hover {
-  background-color: #0f1c2c;
+.form input, select {
+  margin-bottom: 30px;
 }
