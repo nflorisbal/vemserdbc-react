@@ -8,5 +8,12 @@ Exercícios desenvolvidos durante as aulas de React do **Programa Vem Ser DBC**.
 
 ## Aula 2
 
+- Props
+- Fragmentos
 - Eventos
 - Hooks
+
+## Aula 3
+
+- State Lift
+- React Router
