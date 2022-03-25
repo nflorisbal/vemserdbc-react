@@ -1,8 +1,24 @@
 .contentRepositories{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-items: left;
   align-items: center;
   column-gap: 5vw;
   width: 70vw;
+}
+
+.card {
+  width: 100%;
+  border: 2px solid #bd93f9;
+  border-radius: 4px;
+  background-color: #44475a;
+  color: #f8f8f2;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  height: 250px;
+}
+
+
+.card a{
+  color:#f1fa8c;
 }

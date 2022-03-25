@@ -1,7 +1,9 @@
+import Form from "../../components/form/Form";
+
 const Contact = () => {
   return (
     <>
-      <h1>Form</h1>
+      <Form />
     </>
   );
 }

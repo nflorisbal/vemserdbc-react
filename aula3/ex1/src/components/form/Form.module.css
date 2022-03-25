@@ -1,0 +1,14 @@
+.form textarea, select {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-top: 20px;
+  padding: 20px 10px;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  border: none;
+}
+
+.form input, select {
+  margin-bottom: 30px;
+}

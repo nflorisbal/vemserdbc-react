@@ -1,7 +1,7 @@
-const RepositoryCard = (name, url, language, description) => {
+const RepositoryCard = (key, name, url, language, description) => {
   return (
     <>
-      <p></p>
+      <p>{name}</p>
     </>
   );
 }
