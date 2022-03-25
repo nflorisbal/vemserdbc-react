@@ -4,7 +4,7 @@ import style from './Home.module.css';
 
 const Home = ({profile}) => {
   return (
-    <section className={style.content}>
+    <section className={style.contentHome}>
         <PhotoProfile avatar={profile.avatar_url} />
         <BioProfile profile={profile}/>
     </section>

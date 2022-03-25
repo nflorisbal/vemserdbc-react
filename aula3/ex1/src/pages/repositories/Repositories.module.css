@@ -1,0 +1,8 @@
+.contentRepositories{
+  display: flex;
+  flex-direction: column;
+  justify-items: left;
+  align-items: center;
+  column-gap: 5vw;
+  width: 70vw;
+}

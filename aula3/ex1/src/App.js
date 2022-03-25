@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import './App.css';
 
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -8,7 +9,7 @@ import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Repositories from './pages/repositories/Repositories';
 import Contact from './pages/contact/Contact';
-import './App.css';
+import ErrorMsg from './components/errorMsg/ErrorMsg';
 
 
 function App() {
@@ -47,9 +48,7 @@ function App() {
             <Footer />
           </BrowserRouter>
         ) : (
-          <p>
-            Deu ruim... tem que fazer essa bagaça!
-          </p>
+          <ErrorMsg />
         )}
     </div>
   );
