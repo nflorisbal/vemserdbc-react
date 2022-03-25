@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import RepositoryCard from '../../components/repositoryCard/RepositoryCard';
 import style from './Repositories.module.css';
 import ErrorMsg from '../../components/errorMsg/ErrorMsg';
 
@@ -29,14 +28,15 @@ const Repositories = () => {
     <section className={style.contentRepositories}>
       {objectIsEmpty()
         ? (
-          <>{reposData.map(({id, name, html_url, language, description}) => 
-              <div key={id} className={style.card}>
-                <h3>{name}</h3>
-                <a href={html_url}>Link</a>
-                <p>{language}</p>
-                <p>{description}</p>
-              </div>
-            )}
+          <>
+          {reposData.map(({id, name, html_url, language, description}) => 
+            <div key={id} className={style.card}>
+              <h3>{name}</h3>
+              <a href={html_url} target='_blank' rel='noreferrer'>Link</a>
+              <p>{language}</p>
+              <p>{description}</p>
+            </div>
+          )}
           </>  
         ) : (
           <ErrorMsg />

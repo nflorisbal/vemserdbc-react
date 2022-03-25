@@ -15,15 +15,18 @@ const Form = () => {
   const [msg, setMsg] = useState('');
 
   return (
-    <section className={style.container}>
+    <section className={style.contentForm}>
+      <h1>No que posso lhe ajudar?</h1>
       <form className={style.form} onSubmit={RegisterUser}>
-        <label htmlFor='name' value='Nome:' />
-        <input type='text' name='name' placeholder='Type your username' />
-        <label htmlFor='email' value='E-mail:' />
-        <input type='text' name='email' placeholder='Type your email'  />
-        <label htmlFor='msg' value='Your message:' />
-        <textarea />
-        <input type='submit' />
+        <label htmlFor='name'>Nome:</label>
+        <input type='text' name='name' placeholder='Digite seu nome' 
+                onChange={(e) => setName(e.target.value)}/>
+        <label htmlFor='email'>E-mail</label>
+        <input type='text' name='email' placeholder='Digite seu e-mail' 
+                onChange={(e) => setEmail(e.target.value)}/>
+        <label htmlFor='msg'>Mensagem:</label>
+        <textarea placeholder='Digite sua mensagem'onChange={(e) => setMsg(e.target.value)}/>
+        <input type='submit' value='Enviar' className={style.submit} />
       </form>
     </section>
   );

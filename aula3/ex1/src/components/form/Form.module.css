@@ -1,14 +1,47 @@
-.form textarea, select {
+.contentForm {
+  justify-items: left;
+  align-items: center;
+  width: 50%;
+}
+
+.contentForm h1 {
+  color: #f1fa8c;
+}
+
+.form {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  margin-top: 20px;
+  
+}
+
+.form textarea {
+  margin-bottom: 30px;
   padding: 20px 10px;
-  border-radius: 4px;
-  background-color: #f1f1f1;
+  border-radius: 5px;
   border: none;
 }
 
-.form input, select {
+.form input {
   margin-bottom: 30px;
+  padding: 20px 10px;
+  font-family: 'JetBrains Mono Regular Nerd';
+  border-radius: 5px;
+  border: none;
+}
+
+.form label {
+  color: #f8f8f2;
+  margin-bottom: 10px;
+}
+
+.form .submit {
+  color: #f8f8f2;
+  font-weight: bold;
+  background: #ffa23f;
+  width: 30%;
+}
+
+.submit:hover {
+  color: #f8f8f2 !important;
+  background: rgba(255, 162, 63, 0.8);
 }
