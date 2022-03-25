@@ -14,7 +14,7 @@
 }
 
 .header a {
-  color: #fafafa;
+  color: #f8f8f2;
   font-size: 18px;
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -28,7 +28,7 @@
 }
 
 .header .contact {
-  color: #fafafa;
+  color: #f8f8f2;
   background: #ffa23f;
   margin-right: 50px;
   padding: 10px 15px;
@@ -39,6 +39,6 @@
 }
 
 .contact:hover {
-  color: #fafafa !important;
+  color: #f8f8f2 !important;
   background: rgba(255, 162, 63, 0.8);
 }
