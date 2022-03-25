@@ -5,6 +5,7 @@ import Header from './components/header/Header';
 import About from './pages/About';
 import Repositories from './pages/Repositories';
 import Contact from './pages/Contact';
+import Home from './pages/Home';
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -25,9 +26,9 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <Header data={userData.login}/>
         <Routes>
-            <Route path='/' element='' />
+            <Route path='/' element={<Home />} />
             <Route path='/About' element={<About />} />
             <Route path='/repositories' element={<Repositories />} />
             <Route path='/contact' element={<Contact />} />

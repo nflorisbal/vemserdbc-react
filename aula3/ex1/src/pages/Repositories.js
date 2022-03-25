@@ -1,6 +1,7 @@
 const Repositories = () => {
   return (
     <>
+    <h1>Repos</h1>
     </>
   );
 }
