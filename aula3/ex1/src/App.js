@@ -6,6 +6,7 @@ import About from './pages/About';
 import Repositories from './pages/Repositories';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
+import Footer from './components/footer/Footer';
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -33,6 +34,7 @@ function App() {
             <Route path='/repositories' element={<Repositories />} />
             <Route path='/contact' element={<Contact />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

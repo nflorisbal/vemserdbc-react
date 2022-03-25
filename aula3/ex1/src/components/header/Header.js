@@ -7,12 +7,12 @@ const Header = ({data}) => {
     <header className={style.header}>
       <Logo data={data} />
       <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/about'>About</Link>
-        <Link to='/repositories'>Repositories</Link>
+        <Link to='/'>home</Link>
+        <Link to='/about'>about</Link>
+        <Link to='/repositories'>repositories</Link>
       </nav>
       <div>
-        <Link className={style.contact} to='/contact'>Contact</Link>
+        <Link className={style.contact} to='/contact'>contact</Link>
       </div>
     </header>
   )
