@@ -1,7 +1,7 @@
 import style from './Logo.module.css';
 
-const Logo = ({data}) => {
-  const titleLogo = `<${data}/>`;
+const Logo = ({userLogin}) => {
+  const titleLogo = `<${userLogin}/>`;
   return (
     <>
       <h3 className={style.logo} to='/'>{titleLogo}</h3>

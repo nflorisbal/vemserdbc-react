@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import Logo from '../logo/Logo';
 import style from './Header.module.css';
 
-const Header = ({data}) => {
+const Header = ({userLogin}) => {
   return (
     <header className={style.header}>
-      <Logo data={data} />
+      <Logo userLogin={userLogin} />
       <nav>
         <Link to='/'>home</Link>
         <Link to='/about'>about</Link>

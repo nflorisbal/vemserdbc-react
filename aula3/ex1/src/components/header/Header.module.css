@@ -5,12 +5,12 @@
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  width: 100vw;
+  width: 100%;
 }
 
 .header nav {
   margin-left: 20px;
-  width: 80%;
+  width: 100%;
 }
 
 .header a {
@@ -30,7 +30,7 @@
 .header .contact {
   color: #fafafa;
   background: #ffa23f;
-  margin-right: 20px;
+  margin-right: 50px;
   padding: 10px 15px;
   display: inline-block;  
   text-align: center;

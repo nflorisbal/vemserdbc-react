@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+
 import Header from './components/header/Header';
-import About from './pages/About';
-import Repositories from './pages/Repositories';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
 import Footer from './components/footer/Footer';
+import Home from './pages/home/Home';
+import About from './pages/about/About';
+import Repositories from './pages/repositories/Repositories';
+import Contact from './pages/contact/Contact';
+import './App.css';
+
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -20,22 +23,34 @@ function App() {
     }
   }
 
+  const objectIsEmpty = () => {
+    if (Object.keys(userData).length) return true;
+    else return false;
+  }
+
   useEffect(() => {
     setup();
   }, []);
 
   return (
-    <div>
-      <BrowserRouter>
-        <Header data={userData.login}/>
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/About' element={<About />} />
-            <Route path='/repositories' element={<Repositories />} />
-            <Route path='/contact' element={<Contact />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+    <div className='container'>
+      {objectIsEmpty()
+        ? (
+          <BrowserRouter>
+            <Header userLogin={userData.login} />
+            <Routes>
+              <Route path='/' element={<Home profile={userData} />} />
+              <Route path='/About' element={<About />} />
+              <Route path='/repositories' element={<Repositories />} />
+              <Route path='/contact' element={<Contact />} />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        ) : (
+          <p>
+            Deu ruim... tem que fazer essa bagaça!
+          </p>
+        )}
     </div>
   );
 }
