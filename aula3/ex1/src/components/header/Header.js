@@ -8,11 +8,11 @@ const Header = ({userLogin}) => {
       <Logo userLogin={userLogin} />
       <nav>
         <Link to='/'>home</Link>
-        <Link to='/about'>about</Link>
-        <Link to='/repositories'>repositories</Link>
+        <Link to='/about'>sobre</Link>
+        <Link to='/repositories'>repositórios</Link>
       </nav>
       <div>
-        <Link className={style.contact} to='/contact'>contact</Link>
+        <Link className={style.contact} to='/contact'>contato</Link>
       </div>
     </header>
   )

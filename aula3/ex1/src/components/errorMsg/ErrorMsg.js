@@ -3,7 +3,7 @@ import style from './ErrorMsg.module.css';
 const ErrorMsg = () => {
   return (
     <div className={style.error}>
-      Error found.
+      Erro encontrado...
     </div>
   );
 }
