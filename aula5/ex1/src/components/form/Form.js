@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { WorkerContext } from '../../context/Worker';
 import style from './Form.module.css';
 
+let id = 1;
+
 const Form = () => {
   const { name, 
           setName, 
@@ -15,7 +17,14 @@ const Form = () => {
 
   const addWorker = (event) => {
     event.preventDefault();
-    setWorkersList([])
+    if(!name || !email || !job) return console.log('algum campo vazio');
+    
+    if(workersList.length === 0) {
+      setWorkersList([{ id, name, email, job }]);
+    } else {
+      setWorkersList([...workersList, { id, name, email, job }]);
+    }
+    id++;
   }
 
   return (
