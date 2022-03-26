@@ -1,7 +1,7 @@
 import './App.css';
 import Form from './components/form/Form';
 import List from './components/list/List';
-import WorkerProvider from './context/Worker';
+import WorkerProvider from './contexts/Worker';
 
 function App() {
   return (
