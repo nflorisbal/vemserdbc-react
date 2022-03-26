@@ -2,8 +2,6 @@ import { useContext } from 'react';
 import { WorkerContext } from '../../contexts/Worker';
 import style from './Form.module.css';
 
-let id = 1;
-
 const Form = () => {
   const { name, 
           setName, 
@@ -12,20 +10,9 @@ const Form = () => {
           job, 
           setJob,
           workersList,
-          setWorkersList
+          setWorkersList,
+          addWorker
         } = useContext(WorkerContext);
-
-  const addWorker = (event) => {
-    event.preventDefault();
-    if(!name || !email || !job) return console.log('algum campo vazio');
-    
-    if(workersList.length === 0) {
-      setWorkersList([{ id, name, email, job }]);
-    } else {
-      setWorkersList([...workersList, { id, name, email, job }]);
-    }
-    id++;
-  }
 
   return (
     <form className={style.form} onSubmit={addWorker}>
