@@ -10,6 +10,7 @@ const WorkerProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
+  const [idEdit, setIdEdit] = useState(0);
 
   const { isNameValid,
           isEmailValid,
@@ -23,23 +24,42 @@ const WorkerProvider = ({ children }) => {
   }
   
   const removeWorker = (id) => {
-    console.log()
     setWorkersList(
       workersList.filter(worker => worker.id !== id)
     );
   }
 
-  const editWorker = () => {
-    console.log('editing...');
+  const editWorker = (worker) => {
+    document.getElementById('inputName').value = worker.name;
+    document.getElementById('inputEmail').value = worker.email;
+    document.getElementById('inputJob').value = worker.job;
+    setIdEdit(worker.id);
+    setName(worker.name);
+    setEmail(worker.email);
+    setJob(worker.job);
   }
+
+  const updateWorker = () => {
+    if(isNameValid(name) &&  isEmailValid(email) && isJobValid(job)) {
+      let editedWorker = workersList.map(worker => worker.id === idEdit 
+        ? { id: idEdit, name: name, email: email, job: job } : worker);
+
+      setWorkersList(editedWorker);
+      
+    } else {
+      alert('Algum campo inválido.');
+    }
+  }
+
 
   return(
     <WorkerContext.Provider value={
-        { name, setName, 
+        { id,
+          name, setName, 
           email, setEmail, 
           job, setJob, 
           workersList, setWorkersList, 
-          addWorker, editWorker, removeWorker }
+          addWorker, editWorker, removeWorker, updateWorker }
       }>
       { children }
     </WorkerContext.Provider>

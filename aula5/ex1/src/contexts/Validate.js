@@ -5,30 +5,35 @@ export const ValidateContext = createContext();
 const ValidateProvider = ({ children }) => {
 
   const isNameValid = (name) => {
-    let haveJustLetters = [...name].every(letter => letter.toLowerCase() !== letter.toUpperCase() || letter == ' ');
-    let isEmpty = name == '';
+    let haveJustLetters = [...name].every(letter => letter.toLowerCase() !== letter.toUpperCase() || letter === ' ');
+    let isEmpty = name === '';
     let isValid = haveJustLetters && !isEmpty;
-
-    return isValid;
-  }
-
-  const isEmailValid = (email) => {
-    let emailCharacters = email.split('');
-    let emailSplit = email.split('@');
-    let haveAt = emailSplit.length > 1;
-    let emailDomain = haveAt ? emailSplit[1] : '';
-    let emailDomainSplit = emailDomain.split('.');
-    let emailDomainHaveDot = emailDomainSplit.length > 1;
-    let haveCharBetweenDots = emailDomainSplit.every(e => e.length > 1);
-    let startWithLetter = emailCharacters.length ? emailCharacters[0].toUpperCase() !== emailCharacters[0].toLowerCase() : false;
-    let isValid = haveAt && emailDomainHaveDot && haveCharBetweenDots && startWithLetter;
 
     return true;
   }
 
+  const isEmailValid = (email) => {
+    // let emailCharacters = email.split('');
+    // let emailSplit = email.split('@');
+    // let haveAt = emailSplit.length > 1;
+    // let emailDomain = haveAt ? emailSplit[1] : '';
+    // let emailDomainSplit = emailDomain.split('.');
+    // let emailDomainHaveDot = emailDomainSplit.length > 1;
+    // let haveCharBetweenDots = emailDomainSplit.every(e => e.length > 1);
+    // let startWithLetter = emailCharacters.length ? emailCharacters[0].toUpperCase() !== emailCharacters[0].toLowerCase() : false;
+    // let isValid = haveAt && emailDomainHaveDot && haveCharBetweenDots && startWithLetter;
+    
+    // return isValid;
+    return true;
+
+    // const regex =
+    //   (/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
+    // return !(!email || regex.test(email) === false);
+  }
+
   const isJobValid = (job) => {
-    let haveJustLetters = [...job].every(letter => letter.toLowerCase() !== letter.toUpperCase() || letter == ' ');
-    let isEmpty = job == '';
+    let haveJustLetters = [...job].every(letter => letter.toLowerCase() !== letter.toUpperCase() || letter === ' ');
+    let isEmpty = job === '';
     let isValid = haveJustLetters && !isEmpty;
 
     return true;

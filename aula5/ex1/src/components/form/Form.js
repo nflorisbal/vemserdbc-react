@@ -6,7 +6,9 @@ const Form = () => {
   const { setName, 
           setEmail, 
           setJob,
-          addWorker
+          addWorker,
+          updateWorker,
+          workersList
         } = useContext(WorkerContext);
 
   const handleSubmit = (event) => {
@@ -15,13 +17,25 @@ const Form = () => {
     clearInputs();
   }
 
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    updateWorker();
+    clearInputs();
+  }
+  
+
   const clearInputs = () => {
     setName('');
-    document.getElementById('inputName').value = '';
     setEmail('');
-    document.getElementById('inputEmail').value = '';
     setJob('');
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputEmail').value = '';
     document.getElementById('inputJob').value = '';
+  }
+
+  const printArray = (event) => {
+    event.preventDefault();
+    console.log(workersList);
   }
 
   return (
@@ -35,8 +49,14 @@ const Form = () => {
       <label htmlFor='job'>Profissão:</label>
       <input id='inputJob' type='text' name='job' placeholder='Digite sua profissão'
       onChange={(event) => setJob(event.target.value)}/>
-      <button type='submit' onClick={ (event) => handleSubmit(event) }>Adicionar</button>
+      <div>
+        <button type='submit' onClick={ (event) => handleSubmit(event) }>Adicionar</button>
+        <button onClick={(event) => handleUpdate(event)}>Atualizar</button>
+      </div>
+      {/* <input id='inputId' type='text' value={id} /> */}
+      <button onClick={(event) => printArray(event)}>status</button>
     </form>
+
   );
 }
 
