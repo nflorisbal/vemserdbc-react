@@ -5,7 +5,11 @@ export const ValidateContext = createContext();
 const ValidateProvider = ({ children }) => {
 
   const isNameValid = (name) => {
-    return true;
+    let haveJustLetters = [...name].every(letter => letter.toLowerCase() !== letter.toUpperCase() || letter == ' ');
+    let isEmpty = name == '';
+    let isValid = haveJustLetters && !isEmpty;
+
+    return isValid;
   }
 
   const isEmailValid = (email) => {
@@ -19,10 +23,14 @@ const ValidateProvider = ({ children }) => {
     let startWithLetter = emailCharacters.length ? emailCharacters[0].toUpperCase() !== emailCharacters[0].toLowerCase() : false;
     let isValid = haveAt && emailDomainHaveDot && haveCharBetweenDots && startWithLetter;
 
-    return isValid;
+    return true;
   }
 
   const isJobValid = (job) => {
+    let haveJustLetters = [...job].every(letter => letter.toLowerCase() !== letter.toUpperCase() || letter == ' ');
+    let isEmpty = job == '';
+    let isValid = haveJustLetters && !isEmpty;
+
     return true;
   }
 

@@ -8,3 +8,7 @@
 .form input {
   margin-bottom: 5px;
 }
+
+.form button {
+  margin: 10px 0;
+}

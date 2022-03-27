@@ -15,13 +15,10 @@ const WorkerProvider = ({ children }) => {
           isEmailValid,
           isJobValid } = useContext(ValidateContext);
 
-  const addWorker = (event) => {
-    event.preventDefault();
-    
+  const addWorker = () => {
     (isNameValid(name) &&  isEmailValid(email) && isJobValid(job)) 
       ? setWorkersList([...workersList, { id, name, email, job }])
       : alert('Algum campo inválido.');
-    
     id++;
   }
   
@@ -50,4 +47,3 @@ const WorkerProvider = ({ children }) => {
 }
 
 export default WorkerProvider;
-

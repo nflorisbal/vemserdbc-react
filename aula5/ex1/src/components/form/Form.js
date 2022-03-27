@@ -6,21 +6,36 @@ const Form = () => {
   const { setName, 
           setEmail, 
           setJob,
-          addWorker,
+          addWorker
         } = useContext(WorkerContext);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addWorker();
+    clearInputs();
+  }
+
+  const clearInputs = () => {
+    setName('');
+    document.getElementById('inputName').value = '';
+    setEmail('');
+    document.getElementById('inputEmail').value = '';
+    setJob('');
+    document.getElementById('inputJob').value = '';
+  }
+
   return (
-    <form className={style.form} onSubmit={ addWorker } >
+    <form className={style.form} >
       <label htmlFor='name'>Nome:</label>
-      <input type='text' name='name' placeholder='Digite seu nome' 
+      <input id='inputName' type='text' name='name' placeholder='Digite seu nome' 
       onChange={(event) => setName(event.target.value)}/>
       <label htmlFor='email'>E-mail:</label>
-      <input type='text' name='email' placeholder='Digite seu email' 
+      <input id='inputEmail' type='text' name='email' placeholder='Digite seu email' 
       onChange={(event) => setEmail(event.target.value)}/>
       <label htmlFor='job'>Profissão:</label>
-      <input type='text' name='job' placeholder='Digite sua profissão'
+      <input id='inputJob' type='text' name='job' placeholder='Digite sua profissão'
       onChange={(event) => setJob(event.target.value)}/>
-      <input type='submit' value='Adicionar'/>
+      <button type='submit' onClick={ (event) => handleSubmit(event) }>Adicionar</button>
     </form>
   );
 }
