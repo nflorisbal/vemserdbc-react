@@ -5,8 +5,7 @@ import style from './List.module.css';
 
 const List = () => {
   const { workersList, 
-          setWorkersList, 
-          updateWorker, 
+          editWorker, 
           removeWorker } = useContext(WorkerContext);
 
   return (
@@ -16,7 +15,7 @@ const List = () => {
           <p>Nome: {worker.name}</p>
           <p>E-mail: {worker.email}</p>
           <p>Profissão: {worker.job}</p>
-          <button onClick={() => updateWorker()}>Atualizar</button>
+          <button onClick={() => editWorker()}>Editar</button>
           <button onClick={() => removeWorker(worker.id)}>Remover</button>
         </div>
       )}

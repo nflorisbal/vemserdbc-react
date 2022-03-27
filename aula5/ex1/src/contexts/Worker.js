@@ -1,35 +1,39 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
+import { ValidateContext } from './Validate';
 
 export const WorkerContext = createContext();
 
 let id = 1;
 
-const WorkerProvider = ({children}) => {
+const WorkerProvider = ({ children }) => {
   const [workersList, setWorkersList] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
 
+  const { isNameValid,
+          isEmailValid,
+          isJobValid } = useContext(ValidateContext);
+
   const addWorker = (event) => {
     event.preventDefault();
-    if(!name || !email || !job) return console.log('algum campo vazio');
     
-    if(workersList.length === 0) {
-      setWorkersList([{ id, name, email, job }]);
-    } else {
-      setWorkersList([...workersList, { id, name, email, job }]);
-    }
+    (isNameValid(name) &&  isEmailValid(email) && isJobValid(job)) 
+      ? setWorkersList([...workersList, { id, name, email, job }])
+      : alert('Algum campo inválido.');
+    
     id++;
   }
   
-  const updateWorker = () => {
-    console.log('update...');
-  }
-
   const removeWorker = (id) => {
+    console.log()
     setWorkersList(
       workersList.filter(worker => worker.id !== id)
     );
+  }
+
+  const editWorker = () => {
+    console.log('editing...');
   }
 
   return(
@@ -38,7 +42,7 @@ const WorkerProvider = ({children}) => {
           email, setEmail, 
           job, setJob, 
           workersList, setWorkersList, 
-          addWorker, updateWorker, removeWorker }
+          addWorker, editWorker, removeWorker }
       }>
       { children }
     </WorkerContext.Provider>
@@ -46,3 +50,4 @@ const WorkerProvider = ({children}) => {
 }
 
 export default WorkerProvider;
+
