@@ -12,10 +12,9 @@ const List = () => {
     <>
       { workersList.map((worker) =>
         <div className={style.card} key={worker.id}>
-          <p>Id: {worker.id}</p>
-          <p>Nome: {worker.name}</p>
-          <p>E-mail: {worker.email}</p>
-          <p>Profissão: {worker.job}</p>
+          <p><strong>Nome:</strong> {worker.name}</p>
+          <p><strong>E-mail:</strong> {worker.email}</p>
+          <p><strong>Profissão:</strong> {worker.job}</p>
           <button onClick={() => editWorker(worker)}>Editar</button>
           <button onClick={() => removeWorker(worker.id)}>Remover</button>
         </div>

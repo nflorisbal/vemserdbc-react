@@ -9,6 +9,9 @@
   margin-bottom: 5px;
 }
 
-.form button {
-  margin: 10px 0;
+.form div {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
 }

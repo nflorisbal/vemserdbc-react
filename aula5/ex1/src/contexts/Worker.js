@@ -4,23 +4,25 @@ import { ValidateContext } from './Validate';
 export const WorkerContext = createContext();
 
 let id = 1;
+let idEdit = 0;
 
 const WorkerProvider = ({ children }) => {
   const [workersList, setWorkersList] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
-  const [idEdit, setIdEdit] = useState(0);
 
   const { isNameValid,
           isEmailValid,
           isJobValid } = useContext(ValidateContext);
 
   const addWorker = () => {
-    (isNameValid(name) &&  isEmailValid(email) && isJobValid(job)) 
-      ? setWorkersList([...workersList, { id, name, email, job }])
-      : alert('Algum campo inválido.');
-    id++;
+    if (isNameValid(name) &&  isEmailValid(email) && isJobValid(job)) {
+      setWorkersList([...workersList, { id, name, email, job }]);
+      document.getElementById('addButton').disabled = false;
+      id++;
+      return true;
+    } else return false;
   }
   
   const removeWorker = (id) => {
@@ -33,7 +35,8 @@ const WorkerProvider = ({ children }) => {
     document.getElementById('inputName').value = worker.name;
     document.getElementById('inputEmail').value = worker.email;
     document.getElementById('inputJob').value = worker.job;
-    setIdEdit(worker.id);
+    
+    idEdit = worker.id;
     setName(worker.name);
     setEmail(worker.email);
     setJob(worker.job);
@@ -43,14 +46,11 @@ const WorkerProvider = ({ children }) => {
     if(isNameValid(name) &&  isEmailValid(email) && isJobValid(job)) {
       let editedWorker = workersList.map(worker => worker.id === idEdit 
         ? { id: idEdit, name: name, email: email, job: job } : worker);
-
       setWorkersList(editedWorker);
-      
-    } else {
-      alert('Algum campo inválido.');
-    }
+      idEdit = 0;
+      return true;
+    } else return false;
   }
-
 
   return(
     <WorkerContext.Provider value={

@@ -8,22 +8,18 @@ const Form = () => {
           setJob,
           addWorker,
           updateWorker,
-          workersList
         } = useContext(WorkerContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addWorker();
-    clearInputs();
+    (addWorker()) ? clearInputs() : alert('Algum campo inválido.');
   }
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    updateWorker();
-    clearInputs();
+    (updateWorker()) ? clearInputs() : alert('Algum campo inválido.');
   }
   
-
   const clearInputs = () => {
     setName('');
     setEmail('');
@@ -31,11 +27,6 @@ const Form = () => {
     document.getElementById('inputName').value = '';
     document.getElementById('inputEmail').value = '';
     document.getElementById('inputJob').value = '';
-  }
-
-  const printArray = (event) => {
-    event.preventDefault();
-    console.log(workersList);
   }
 
   return (
@@ -49,12 +40,10 @@ const Form = () => {
       <label htmlFor='job'>Profissão:</label>
       <input id='inputJob' type='text' name='job' placeholder='Digite sua profissão'
       onChange={(event) => setJob(event.target.value)}/>
-      <div>
-        <button type='submit' onClick={ (event) => handleSubmit(event) }>Adicionar</button>
-        <button onClick={(event) => handleUpdate(event)}>Atualizar</button>
+      <div className={style.buttons} >
+        <button id='addButton'type='submit' onClick={ (event) => handleSubmit(event) }>Adicionar</button>
+        <button id='updateButton' onClick={(event) => handleUpdate(event)}>Atualizar</button>
       </div>
-      {/* <input id='inputId' type='text' value={id} /> */}
-      <button onClick={(event) => printArray(event)}>status</button>
     </form>
 
   );
