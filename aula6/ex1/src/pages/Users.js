@@ -8,7 +8,6 @@ const Users = () => {
     if(localStorage.getItem('token')) {
       setLogged(true);
     };
-    console.log(logged);
   },[logged, setLogged]);
 
   return(
