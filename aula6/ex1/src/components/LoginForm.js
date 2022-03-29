@@ -9,18 +9,18 @@ const LoginForm = () => {
     <div>
       <Formik 
         initialValues={{
-          senha: '',
           usuario: '',
+          senha: '',
         }}
-        onSubmit={values => {
+        onSubmit={(values) => {
           login({values});
         }}>
 
         <Form>
           <label htmlFor='usuario'>Usuário</label>
-          <Field id='usuario' name='usuario' placeholder='Digite seu usuário' />
+          <Field name='usuario' placeholder='Digite seu usuário' />
           <label htmlFor='senha'>Password</label>
-          <Field id='senha' name='senha' placeholder='Digite sua senha' />
+          <Field name='senha' placeholder='Digite sua senha' />
           <button type='submit'>Logar</button>
         </Form>
       </Formik>

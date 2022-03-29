@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [logged, setLogged] = useState(false);
   const goto = useNavigate();
 
-  const login = async (values) => {
+  const login = async ({values}) => {
     try {
       const { data } = await Api.post('/auth', values);
       setToken(data);
@@ -22,11 +22,13 @@ const AuthProvider = ({ children }) => {
   }
 
   const logout = () => {
- 
+    localStorage.removeItem('token');
+    setLogged(false);
+    goto('./');
   }
 
   return(
-    <AuthContext.Provider value={{ login, token, setToken, logged, setLogged }}> 
+    <AuthContext.Provider value={{ login, logout, token, setToken, logged, setLogged }}> 
       { children }
     </AuthContext.Provider>
   );
