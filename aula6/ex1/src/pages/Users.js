@@ -1,15 +1,15 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../context/Auth';
-import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
-  const { logout, logged, token, setLogged } = useContext(AuthContext);
-  const goto = useNavigate();
+  const { logout, logged, setLogged } = useContext(AuthContext);
 
   useEffect(() => {
-    // console.log(logged);
-    localStorage.getItem('token');
-  },[]);
+    if(localStorage.getItem('token')) {
+      setLogged(true);
+    };
+    console.log(logged);
+  },[logged, setLogged]);
 
   return(
     <div>
