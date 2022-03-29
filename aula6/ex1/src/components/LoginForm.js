@@ -2,11 +2,13 @@ import { useContext } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { AuthContext } from '../context/Auth';
 
+import style from './LoginForm.module.css';
+
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
 
   return(
-    <div>
+    <div className={style.divForm}>
       <Formik 
         initialValues={{
           usuario: '',
@@ -16,7 +18,7 @@ const LoginForm = () => {
           login({values});
         }}>
 
-        <Form>
+        <Form className={style.form}>
           <label htmlFor='usuario'>Usuário</label>
           <Field name='usuario' placeholder='Digite seu usuário' />
           <label htmlFor='senha'>Password</label>
