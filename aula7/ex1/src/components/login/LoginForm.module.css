@@ -1,0 +1,11 @@
+.form {
+  display: flex;
+  color: white;
+  margin-right: 20px;
+  align-items: flex-end;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
