@@ -6,7 +6,7 @@ const Menu = () => {
   return (
     <nav className={style.navbar}>
         <Link to='/'>Home</Link>
-        <Link to='/users'>Users</Link>
+        <Link to='/people'>Cadastros</Link>
     </nav>
   );
 }
