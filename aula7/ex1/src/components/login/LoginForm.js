@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { Formik, Form, Field } from 'formik';
+import { AuthContext } from '../../contexts/Auth';
 
 import style from './LoginForm.module.css';
 
 const LoginForm = () => {
+  const { login } = useContext(AuthContext)
+
   return(
     <div>
       <Formik

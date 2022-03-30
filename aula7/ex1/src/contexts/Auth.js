@@ -1,19 +1,21 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Api from '../apis/Api';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('');
-  const [logged, setLogged] = useState('');
+  const [logged, setLogged] = useState(false);
+  const goto = useNavigate();
   
   const login = async ({values}) => {
     try {
       const {data} = await Api.post('/auth', values);
       setToken(data);
-      localStorage.setItem('token', JSON.stringify(data));
+      localStorage.setItem('token', data);
+      Api.defaults.headers.common['Authorization'] = data;
       setLogged(true);
-      getMouseEventOptions('../users');
     } catch (error) {
       console.log(error);
     }
@@ -22,11 +24,26 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token');
     setLogged(false);
-    getMouseEventOptions('./');
+    goto('/');
+  }
+
+  const haveToken = () => {
+    let teste = localStorage.getItem('token')
+    console.log(teste);
+    return teste;
   }
 
   return(
-    <AuthContext.Provider value={{ login, logout, token, logged }}>
+    <AuthContext.Provider value={{ 
+        login, 
+        logout, 
+        token, 
+        setToken, 
+        logged, 
+        setLogged,
+        goto,
+        haveToken,
+    }}>
       { children }
     </AuthContext.Provider>
   );
