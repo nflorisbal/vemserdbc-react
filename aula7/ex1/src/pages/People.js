@@ -14,7 +14,6 @@ const People = () => {
     } else {
       Api.defaults.headers.common['Authorization'] = haveToken();
       setLogged(true);
-      console.log(logged);
       getPeople();
     }
   }
@@ -32,6 +31,7 @@ const People = () => {
       <h1>Cadastros</h1>
       {people.map(person => 
         <div key={person.idPessoa}>
+          <hr/>
           <p>{person.nome}</p>
           <p>{person.email}</p>
           <p>{moment(person.dataNascimento).format('DD/MM/YYYY')}</p>

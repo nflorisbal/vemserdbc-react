@@ -17,5 +17,5 @@ code {
 }
 
 .container {
-  height: calc(100vh - 160px);
+  flex-grow: 1;
 }
