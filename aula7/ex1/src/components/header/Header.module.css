@@ -5,3 +5,7 @@
   height: 60px;
   background-color: #282a36;
 }
+
+.headerLeftSide {
+  display: flex;
+}

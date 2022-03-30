@@ -1,0 +1,13 @@
+.navbar a {
+  color: #f8f8f2;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: .2s linear;
+  margin: 0 5px;
+}
+
+.navbar a:hover {
+  color: #ff79c6;
+  border-color: #ff79c6;
+}
