@@ -7,7 +7,6 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('');
   const [logged, setLogged] = useState(false);
-  const [people, setPeople] = useState([]);
   const goTo = useNavigate();
   
   const login = async ({values}) => {
@@ -32,16 +31,6 @@ const AuthProvider = ({ children }) => {
     return localStorage.getItem('token');
   }
 
-  const getPeople = async () => {
-    try {
-      const {data} = await Api.get('/pessoa');
-      setPeople(data);
-      console.log(logged);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return(
     <AuthContext.Provider value={{ 
         login, 
@@ -50,10 +39,7 @@ const AuthProvider = ({ children }) => {
         setToken, 
         logged, 
         setLogged,
-        goTo,
         haveToken,
-        people,
-        getPeople,
     }}>
       { children }
     </AuthContext.Provider>

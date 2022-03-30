@@ -4,8 +4,10 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './pages/Home';
 import People from './pages/People';
+import Address from './pages/Address';
 
 import './App.css';
+
 
 
 function App() {
@@ -15,8 +17,10 @@ function App() {
         <AuthProvider>
           <Header />
           <Routes>
+            {/* <Route path='*' element={<NotFound />} /> */}
             <Route path='/' element={<Home />} />
             <Route path='/people' element={ <People />} />
+            <Route path='/address' element={ <Address />} />
           </Routes>
           <Footer />
         </AuthProvider>

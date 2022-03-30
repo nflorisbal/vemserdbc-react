@@ -25,7 +25,7 @@ const LoginForm = () => {
           </div>
           <div className={style.inputs}>
             <label htmlFor='senha'>Senha</label>
-            <Field name='senha' placeholder='Digite sua senha' />
+            <Field name='senha' type='password' placeholder='Digite sua senha' />
           </div>
           <div className={style.inputs}>
             <button type='submit'>Logar</button>

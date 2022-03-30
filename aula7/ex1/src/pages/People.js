@@ -1,20 +1,38 @@
 import moment from 'moment';
-import { useContext, useEffect } from 'react';
-import Api from '../apis/Api';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/Auth';
-
+import Loading from '../components/loading/Loading';
+import Error from '../components/error/Error';
+import Api from '../apis/Api';
 
 const People = () => {
-  const { setLogged, logged, haveToken, goTo, people, getPeople } = useContext(AuthContext);
+  const { setLogged, haveToken } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] =  useState(false);
+  const [people, setPeople] = useState([]);
+  const goTo = useNavigate();
 
   const setup = () => {
     if(!haveToken()) {
-      goTo('/');
       setLogged(false);
+      goTo('/');
     } else {
       Api.defaults.headers.common['Authorization'] = haveToken();
       setLogged(true);
       getPeople();
+    }
+  }
+  
+  const getPeople = async () => {
+    try {
+      const {data} = await Api.get('/pessoa');
+      setPeople(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      setError(true);
     }
   }
 
@@ -25,6 +43,14 @@ const People = () => {
   useEffect(() => {
     setup();
   },[]);
+
+  if (loading) {
+    return(<Loading />);
+  }
+
+  if (error) {
+    return(<Error />);
+  }
 
   return(
     <div className='container'>

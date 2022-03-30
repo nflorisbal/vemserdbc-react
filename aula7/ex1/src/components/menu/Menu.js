@@ -7,6 +7,7 @@ const Menu = () => {
     <nav className={style.navbar}>
         <Link to='/'>Home</Link>
         <Link to='/people'>Cadastros</Link>
+        <Link to='/address'>Endereços</Link>
     </nav>
   );
 }
