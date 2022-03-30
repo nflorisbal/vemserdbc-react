@@ -27,13 +27,15 @@ const LoginForm = () => {
             <label htmlFor='senha'>Senha</label>
             <Field name='senha' placeholder='Digite sua senha' />
           </div>
-          <div>
+          <div className={style.inputs}>
             <button type='submit'>Logar</button>
           </div>
         </Form>
       </Formik>
       ) :  (
-        <button onClick={logout}>Logout</button>
+        <div className={style.inputs}>
+          <button className={style.btnLogout} onClick={logout}>Logout</button>
+        </div>
       )}
     </div>
   );

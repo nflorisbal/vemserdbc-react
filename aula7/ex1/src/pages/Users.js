@@ -2,7 +2,17 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../contexts/Auth';
 
 const Users = () => {
-  const { goto } = useContext(AuthContext);
+  const { haveToken, goTo } = useContext(AuthContext);
+
+  const setup = () => {
+    (!haveToken()) 
+      ? goTo('/') 
+      : console.log('imprimindo usuários...');
+  }
+
+  useEffect(() => {
+    setup();
+  },[]);
 
   return(
     <div className='container'>

@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('');
   const [logged, setLogged] = useState(false);
-  const goto = useNavigate();
+  const goTo = useNavigate();
   
   const login = async ({values}) => {
     try {
@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token');
     setLogged(false);
-    goto('/');
+    goTo('/');
   }
 
   const haveToken = () => {
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
         setToken, 
         logged, 
         setLogged,
-        goto,
+        goTo,
         haveToken,
     }}>
       { children }
