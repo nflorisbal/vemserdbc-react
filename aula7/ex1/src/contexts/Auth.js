@@ -28,9 +28,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const haveToken = () => {
-    let teste = localStorage.getItem('token')
-    console.log(teste);
-    return teste;
+    return localStorage.getItem('token');
   }
 
   return(

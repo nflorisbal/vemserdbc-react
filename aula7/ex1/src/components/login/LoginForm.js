@@ -5,17 +5,18 @@ import { AuthContext } from '../../contexts/Auth';
 import style from './LoginForm.module.css';
 
 const LoginForm = () => {
-  const { login } = useContext(AuthContext)
+  const { login, logout, haveToken } = useContext(AuthContext)
 
   return(
     <div>
+      {(!haveToken()) ? (
       <Formik
         initialValues={{
           usuario: '',
           senha: '',
         }}
         onSubmit={(values) => {
-          console.log('teste');
+          login({values});
         }}>
         <Form className={style.form}>
           <div className={style.inputs}>
@@ -31,6 +32,9 @@ const LoginForm = () => {
           </div>
         </Form>
       </Formik>
+      ) :  (
+        <button onClick={logout}>Logout</button>
+      )}
     </div>
   );
 }

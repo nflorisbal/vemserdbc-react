@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/Auth';
 
 const Home = () => {
-  const { haveToken, token } = useContext(AuthContext);
+  const { haveToken } = useContext(AuthContext);
 
   return(
     <div className='container'>

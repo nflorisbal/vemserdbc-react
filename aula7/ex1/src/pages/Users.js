@@ -5,7 +5,9 @@ const Users = () => {
   const { goto } = useContext(AuthContext);
 
   return(
-    <h1>Users</h1>
+    <div className='container'>
+      <h1>Users</h1>
+    </div>
   );
 }
 
