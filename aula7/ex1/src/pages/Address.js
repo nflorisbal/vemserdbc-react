@@ -19,13 +19,14 @@ const Address = () => {
       goTo('/');
     } else {
       setLogged(true);
-      getAddress();
+      getAddress(91225190);
     }
   }
 
-  const getAddress = async () => {
+  const getAddress = async (cep) => {
     try {
-      // const {data} = await
+      const {data} = await ViaCepApi.get(`/${cep}/json`)
+      console.log(data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -64,7 +65,7 @@ const Address = () => {
           alert(JSON.stringify(values, null, 2));
         }}
         >        
-        <Form>
+        <Form className='formAddress'>
           <label htmlFor='cep'>CEP</label>
           <Field name='cep' />
           <label htmlFor='logradouro'>Logradouro</label>

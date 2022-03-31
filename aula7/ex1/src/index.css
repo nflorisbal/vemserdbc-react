@@ -21,37 +21,3 @@ h1 {
   color: #f8f8f2;
   margin: 20px 0;
 }
-
-.container {
-  flex-grow: 1;
-  margin: 0 auto;
-  width: 80%;
-}
-
-.containerCard {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
-}
-
-.notfound {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-}
-
-.notfound img {
-  width: 40vw;
-}
-
-.card {
-  border: 2px solid #bd93f9;
-  border-radius: 4px;
-  background-color: #383a59;
-  color: #f8f8f2;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
