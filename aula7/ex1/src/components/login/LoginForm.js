@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { AuthContext } from '../../contexts/Auth';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import style from './LoginForm.module.css';
 

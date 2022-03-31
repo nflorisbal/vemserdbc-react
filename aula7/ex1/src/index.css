@@ -21,3 +21,9 @@ h1 {
   color: #f8f8f2;
   margin: 20px 0;
 }
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  width: 80%;
+}

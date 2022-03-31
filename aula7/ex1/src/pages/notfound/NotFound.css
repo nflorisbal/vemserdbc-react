@@ -1,0 +1,11 @@
+.notfound {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.notfound img {
+  width: 40vw;
+}

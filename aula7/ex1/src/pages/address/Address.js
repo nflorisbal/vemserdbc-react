@@ -1,10 +1,12 @@
 import { Field, Form, Formik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../contexts/Auth';
-import Loading from '../components/loading/Loading';
-import Error from '../components/error/Error';
-import ViaCepApi from '../apis/ViaCepApi'
+import { viaCep } from '../../api/Api';
+import { AuthContext } from '../../contexts/AuthContext';
+import Loading from '../../components/loading/Loading';
+import Error from '../../components/error/Error';
+
+import './Address.css';
 
 
 const Address = () => {
@@ -25,7 +27,7 @@ const Address = () => {
 
   const getAddress = async (cep) => {
     try {
-      const {data} = await ViaCepApi.get(`/${cep}/json`)
+      const {data} = await viaCep.get(`/${cep}/json`)
       console.log(data);
       setLoading(false);
     } catch (error) {
@@ -67,7 +69,7 @@ const Address = () => {
         >        
         <Form className='formAddress'>
           <label htmlFor='cep'>CEP</label>
-          <Field name='cep' />
+          <Field name='cep' placeholder='00000-000'/>
           <label htmlFor='logradouro'>Logradouro</label>
           <Field name='logradouro' />
           <label htmlFor='complemento'>Complemento</label>
