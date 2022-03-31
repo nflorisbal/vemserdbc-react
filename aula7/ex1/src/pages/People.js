@@ -54,16 +54,18 @@ const People = () => {
 
   return(
     <div className='container'>
-      <h1>Cadastros</h1>
+    <h1>Cadastros de Pessoas</h1>
+    <div className='containerCard'>
+      
       {people.map(person => 
-        <div key={person.idPessoa}>
-          <hr/>
-          <p>{person.nome}</p>
+        <div key={person.idPessoa} className='card'>
+          <p><strong>{person.nome.toUpperCase()}</strong></p>
           <p>{person.email}</p>
           <p>{moment(person.dataNascimento).format('DD/MM/YYYY')}</p>
           <p>{maskCpf(person.cpf)}</p>
         </div>
       )}
+    </div>
     </div>
   );
 }

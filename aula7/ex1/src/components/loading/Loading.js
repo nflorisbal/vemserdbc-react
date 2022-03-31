@@ -1,8 +1,12 @@
-import loadingImg from '../../images/loading.gif';
+import loadingImg from '../../images/loading.png';
+
+import style from './Loading.module.css';
 
 const Loading = () => {
   return(
-    <img src={loadingImg} alt='loading icon'/>
+    <div className={style.loadingImg} >
+      <img className={style.img} src={loadingImg} alt='loading icon'/>
+    </div>
   );
 }
 

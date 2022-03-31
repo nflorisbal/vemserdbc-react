@@ -1,9 +1,12 @@
-import errorImg from '../../images/error.gif';
+import errorImg from '../../images/error.png';
 
+import style from './Error.module.css';
 
 const Error = () => {
   return(
-    <img src={errorImg} alt='error icon'/>
+    <div className={style.errorImg}>
+      <img className={style.img} src={errorImg} alt='error icon'/>
+    </div>
   );
 }
 
