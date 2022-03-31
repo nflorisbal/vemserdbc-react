@@ -61,7 +61,7 @@ const Address = () => {
           telefone: '',
         }}
         onSubmit={(values) => {
-          console.log(values);
+          alert(JSON.stringify(values, null, 2));
         }}
         >        
         <Form>
