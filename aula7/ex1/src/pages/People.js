@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/Auth';
 import Loading from '../components/loading/Loading';
 import Error from '../components/error/Error';
-import Api from '../apis/Api';
+import PessoaApi from '../apis/PessoaApi';
 
 const People = () => {
   const { setLogged, haveToken } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const People = () => {
       setLogged(false);
       goTo('/');
     } else {
-      Api.defaults.headers.common['Authorization'] = haveToken();
+      PessoaApi.defaults.headers.common['Authorization'] = haveToken();
       setLogged(true);
       getPeople();
     }
@@ -26,7 +26,7 @@ const People = () => {
   
   const getPeople = async () => {
     try {
-      const {data} = await Api.get('/pessoa');
+      const {data} = await PessoaApi.get('/pessoa');
       setPeople(data);
       setLoading(false);
     } catch (error) {
