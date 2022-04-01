@@ -11,7 +11,7 @@ import './People.css'
 
 const People = () => {
   const { setLogged, haveToken } = useContext(AuthContext);
-  const { getPeople, people, loading, error } = useContext(PeopleContext);
+  const { getPeople, people, setLoading, loading, error } = useContext(PeopleContext);
 
   const goTo = useNavigate();
 
@@ -26,12 +26,25 @@ const People = () => {
     }
   }
 
+  const removePerson = async (id) => {
+    setLoading(true);
+    try{
+      await crud.delete(`/pessoa/${id}`);
+      setLoading(false);
+      getPeople();
+    } catch(error){
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
   const maskCpf = (cpf) => {
     return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
   useEffect(() => {
     setup();
+    // eslint-disable-next-line 
   },[]);
 
   if (loading) {
@@ -53,6 +66,8 @@ const People = () => {
             <p>{person.email}</p>
             <p>{moment(person.dataNascimento).format('DD/MM/YYYY')}</p>
             <p>{maskCpf(person.cpf)}</p>
+            <button onClick={() => goTo(`/create-person/${person.idPessoa}`)}>Atualizar</button>
+            <button onClick={() => removePerson(person.idPessoa)}>Remover</button>
           </div>
         )}
       </div>

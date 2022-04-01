@@ -24,6 +24,7 @@ const PeopleProvider = ({ children }) => {
     <PeopleContext.Provider value={{
       getPeople,
       people,
+      setLoading,
       loading,
       error,
     }}>
