@@ -3,3 +3,17 @@
   flex-direction: column;
   color:#f8f8f2;
 }
+
+.link {
+  color: #8be9fd;
+  font-weight: bold;
+  transition: .2s linear;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-top: 500px;
+}
+
+.link:hover {
+  color: #ff79c6;
+  border-color: #ff79c6;
+}

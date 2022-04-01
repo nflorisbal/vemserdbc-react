@@ -26,3 +26,7 @@
   color: #f8f8f2 !important;
   background: rgba(255, 162, 63, 0.8);
 }
+
+.errorMessage {
+  color: red;
+}

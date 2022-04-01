@@ -11,8 +11,13 @@ import './People.css'
 
 const People = () => {
   const { setLogged, haveToken } = useContext(AuthContext);
-  const { getPeople, people, setLoading, loading, error } = useContext(PeopleContext);
+  const { getPeople, people, setLoading, loading, error, setUpdate } = useContext(PeopleContext);
   const goTo = useNavigate();
+
+  const handleUpdate = id => {
+    setUpdate(true);
+    goTo(`/create-person/${id}`);
+  }
 
   const removePerson = async (id) => {
     try {
@@ -65,7 +70,7 @@ const People = () => {
             <p>{person.email}</p>
             <p>{moment(person.dataNascimento).format('DD/MM/YYYY')}</p>
             <p>{maskCpf(person.cpf)}</p>
-            <button onClick={() => goTo(`/create-person/${person.idPessoa}`)}>Atualizar</button>
+            <button onClick={() => handleUpdate(person.idPessoa)}>Atualizar</button>
             <button onClick={() => removePerson(person.idPessoa)}>Remover</button>
           </div>
         )}

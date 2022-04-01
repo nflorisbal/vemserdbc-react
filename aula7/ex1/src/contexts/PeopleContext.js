@@ -7,6 +7,7 @@ const PeopleProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] =  useState(false);
   const [people, setPeople] = useState([]);
+  const [update, setUpdate] = useState(false);
   
   const getPeople = async () => {
     try {
@@ -27,6 +28,8 @@ const PeopleProvider = ({ children }) => {
       setLoading,
       loading,
       error,
+      setUpdate,
+      update,
     }}>
       { children }
     </PeopleContext.Provider>
