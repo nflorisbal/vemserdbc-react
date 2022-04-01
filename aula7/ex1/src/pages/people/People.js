@@ -17,6 +17,7 @@ const People = () => {
 
   const handleUpdate = id => {
     setUpdate(true);
+    
     goTo(`/create-person/${id}?idPessoa=${id}`);
   }
 

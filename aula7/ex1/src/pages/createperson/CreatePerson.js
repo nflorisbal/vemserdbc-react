@@ -26,11 +26,16 @@ const CreatePerson = () => {
     const idPessoa = id[id.length - 1];
     const { data } = await crud.get(`/pessoa/${idPessoa}?idPessoa=${idPessoa}`);
     setUpdatePerson(data);
-    setUpdate(false);
   }
 
-  const putUpdatePerson = async () => {
+  const putUpdatePerson = async (values) => {
+    const pathname = window.location.pathname;
+    const id = pathname.split('/');
+    const idPessoa = id[id.length - 1];
+    values.dataNascimento = moment(values.dataNascimento, 'DD/MM/YYYY').format('YYYY-MM-DD');
+    await crud.put(`/pessoa/${idPessoa}`, values);
 
+    setUpdate(false);
   }
 
   useEffect(() => {
@@ -42,14 +47,23 @@ const CreatePerson = () => {
       <div><Link className='link' to='/people'>Voltar</Link></div>
       <h1>Cadastro de Pessoa</h1>
       <Formik
-        initialValues={{
-          cpf:'',
-          dataNascimento:'',
-          email:'',
-          nome:'',
-      }}
+        initialValues={update ? ({
+          cpf: updatePerson.cpf,
+          dataNascimento: updatePerson.dataNascimento 
+            = moment(updatePerson.dataNascimento, 'YYYY-MM-DD').format('DD/MM/YYYY'),
+          email: updatePerson.email,
+          nome: updatePerson.nome,
+        }) : ({
+          cpf: '',
+          dataNascimento: '',
+          email: '',
+          nome: '',
+      })}
+      enableReinitialize={true}
       onSubmit={async (values) => {
-        createNewPerson(values);
+        update 
+          ? putUpdatePerson(values)
+          : createNewPerson(values);
       }}
       >
         <Form className='formPerson'>
