@@ -12,11 +12,12 @@ import './People.css'
 const People = () => {
   const { setLogged, haveToken } = useContext(AuthContext);
   const { getPeople, people, setLoading, loading, error, setUpdate } = useContext(PeopleContext);
+
   const goTo = useNavigate();
 
   const handleUpdate = id => {
     setUpdate(true);
-    goTo(`/create-person/${id}`);
+    goTo(`/create-person/${id}?idPessoa=${id}`);
   }
 
   const removePerson = async (id) => {

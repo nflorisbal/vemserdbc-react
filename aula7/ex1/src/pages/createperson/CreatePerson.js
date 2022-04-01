@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import { PeopleContext } from '../../contexts/PeopleContext';
@@ -9,6 +9,7 @@ import './CreatePerson.css';
 
 const CreatePerson = () => {
   const { update, setUpdate } = useContext(PeopleContext)
+  const [ updatePerson, setUpdatePerson ] = useState({});
 
   const createNewPerson = async (values) => {
     try {
@@ -19,17 +20,26 @@ const CreatePerson = () => {
     }
   }
 
-  const updatePerson = async () => {
-    console.log('fazer a logica');
+  const getUpdatePerson = async () => {
+    const pathname = window.location.pathname;
+    const id = pathname.split('/');
+    const idPessoa = id[id.length - 1];
+    const { data } = await crud.get(`/pessoa/${idPessoa}?idPessoa=${idPessoa}`);
+    setUpdatePerson(data);
+    setUpdate(false);
   }
 
+  const putUpdatePerson = async () => {
+
+  }
 
   useEffect(() => {
-    if(update) updatePerson();
+    if(update) getUpdatePerson();
   },[]);
+  
   return(
     <div className='container'>
-      <Link className='link' to='/people'>Voltar</Link>
+      <div><Link className='link' to='/people'>Voltar</Link></div>
       <h1>Cadastro de Pessoa</h1>
       <Formik
         initialValues={{
