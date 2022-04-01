@@ -12,27 +12,14 @@ import './People.css'
 const People = () => {
   const { setLogged, haveToken } = useContext(AuthContext);
   const { getPeople, people, setLoading, loading, error } = useContext(PeopleContext);
-
   const goTo = useNavigate();
 
-  const setup = () => {
-    if(!haveToken()) {
-      setLogged(false);
-      goTo('/');
-    } else {
-      crud.defaults.headers.common['Authorization'] = haveToken();
-      setLogged(true);
-      getPeople();
-    }
-  }
-
   const removePerson = async (id) => {
-    setLoading(true);
-    try{
+    try {
       await crud.delete(`/pessoa/${id}`);
       setLoading(false);
       getPeople();
-    } catch(error){
+    } catch (error) {
       console.log(error);
       setLoading(false);
     }
@@ -42,25 +29,37 @@ const People = () => {
     return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
+  const setup = () => {
+    if (!haveToken()) {
+      setLogged(false);
+      goTo('/');
+    } else {
+      crud.defaults.headers.common['Authorization'] = haveToken();
+      setLogged(true);
+      getPeople();
+    }
+  }
+
   useEffect(() => {
     setup();
     // eslint-disable-next-line 
-  },[]);
+  }, []);
 
   if (loading) {
-    return(<Loading />);
+    return (<Loading />);
   }
 
   if (error) {
-    return(<Error />);
+    return (<Error />);
   }
 
-  return(
+  return (
     <div className='container'>
+
       <h1>Lista de Pessoas</h1>
       <Link className='link' to='/create-person'>Novo Cadastro</Link>
-      <div className='containerCard'>   
-        {people.map(person => 
+      <div className='containerCard'>
+        {people.map(person =>
           <div key={person.idPessoa} className='card'>
             <p><strong>{person.nome.toUpperCase()}</strong></p>
             <p>{person.email}</p>

@@ -6,7 +6,6 @@ import { crud } from '../../api/Api';
 import './CreatePerson.css';
 
 const CreatePerson = () => {
-
   const createNewPerson = async (values) => {
     try {
       values.dataNascimento = moment(values.dataNascimento, 'DD/MM/YYYY').format('YYYY-MM-DD');

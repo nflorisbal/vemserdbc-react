@@ -2,4 +2,27 @@
   display: flex;
   flex-direction: column;
   color:#f8f8f2;
+  width: 100%;
+}
+
+.formAddressField {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.formAddress button {
+  color: #f8f8f2;
+  background: #ffa23f;
+  width: 100px;
+  height: 21px;
+  text-align: center;
+  border-radius: 5px;
+  border: 0;
+}
+
+.formAddress button:hover {
+  color: #f8f8f2 !important;
+  background: rgba(255, 162, 63, 0.8);
 }
